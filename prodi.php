@@ -1,10 +1,24 @@
 <?php
 include 'template/header.php';
 include 'template/sidebar.php' ;
+
+$servername = "localhost";
+$database = "poliban";
+$username = "root";
+$password = "";
+
+$sconn = mysqli_connect($servername, $username, $password, $database);
+
+$query = "SELECT * FROM prodi";
+$hasil = mysqli_query($sconn, $query);
+
+$data = [];
+while ($baris = mysqli_fetch_assoc($hasil))
+{
+  $data[] = $baris;
+}
+
 ?>
-
-
-  
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -53,42 +67,25 @@ include 'template/sidebar.php' ;
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th>ID</th>
-                      <th>User</th>
-                      <th>Date</th>
-                      <th>Status</th>
-                      <th>Reason</th>
+                      <th>No</th>
+                      <th>Nama prodi</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
+                    <?php
+                   
+                    foreach ($data as $d) {
+                    ?>
                     <tr>
-                      <td>183</td>
-                      <td>John Doe</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-success">Approved</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                      <td>1</td>
+                      <td><?php echo $d['Nama_Prodi']?> </td>
+                      <td><a href= "" class="btn btn-warning"> Edit</a>
+                      <a href="" class ="btn btn-danger">Hapus</a>
                     </tr>
-                    <tr>
-                      <td>219</td>
-                      <td>Alexander Pierce</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-warning">Pending</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                    <tr>
-                      <td>657</td>
-                      <td>Bob Doe</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-primary">Approved</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                    <tr>
-                      <td>175</td>
-                      <td>Mike Doe</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-danger">Denied</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
+                    <?php
+                    }
+                    ?>
                   </tbody>
                 </table>
               </div>

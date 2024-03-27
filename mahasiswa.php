@@ -1,6 +1,22 @@
 <?php
 include 'template/header.php';
 include 'template/sidebar.php' ;
+
+$servername = "localhost";
+$database = "poliban";
+$username = "root";
+$password = "";
+
+$sconn = mysqli_connect($servername, $username, $password, $database);
+
+$query = "SELECT * FROM mahasiswa JOIN prodi On mahasiswa.id_prodi = prodi.id_prodi";
+$hasil = mysqli_query($sconn, $query);
+
+$data = [];
+while ($baris = mysqli_fetch_assoc($hasil))
+{
+  $data[] = $baris;
+}
 ?>
 
 
@@ -52,42 +68,36 @@ include 'template/sidebar.php' ;
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th>ID</th>
-                      <th>User</th>
-                      <th>Date</th>
-                      <th>Status</th>
-                      <th>Reason</th>
+                      <th>No</th>
+                      <th>NIM</th>
+                      <th>Nama</th>
+                      <th>Nama_Prodi</th>
+                      <th>Nomor_HP</th>
+                      <th>Alamat</th>
+                      <th>Foto</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>183</td>
-                      <td>John Doe</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-success">Approved</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                    <tr>
-                      <td>219</td>
-                      <td>Alexander Pierce</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-warning">Pending</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                    <tr>
-                      <td>657</td>
-                      <td>Bob Doe</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-primary">Approved</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                    <tr>
-                      <td>175</td>
-                      <td>Mike Doe</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-danger">Denied</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
+                  <?php
+                  $i = 1;
+                  foreach ($data as $d) {
+                    ?>
+                  <tr>
+                  <td><?php echo $i++ ?> </td>
+                  <td><?php echo $d['NIM']?> </td>
+                  <td><?php echo $d['Nama']?> </td>
+                  <td><?php echo $d['Nama_Prodi']?> </td>
+                  <td><?php echo $d['Nomor_HP']?> </td>
+                  <td><?php echo $d['Alamat']?> </td>
+                  <td><?php echo $d['Foto']?> </td>
+                      <td><a href= "" class="btn btn-warning"> Edit</a>
+                      <a href="" class ="btn btn-danger">Hapus</a>
+                      </tr>
+                    <?php
+                    }
+
+                    ?>
                   </tbody>
                 </table>
               </div>
