@@ -63,10 +63,10 @@ while ($baris = mysqli_fetch_assoc($hasil))
                   foreach ($data as $d) {
                     ?>
                   <tr>
-                    <td><?php echo $d['ID_Prodi']?></td>
-                    <td><?php echo $d['Nama_Prodi']?></td>
-                    <td><a href="editprodi.php?ID_Prodi=<?= $d['ID_Prodi'] ?>" class="btn btn-warning">Edit</a>
-                    <a href="hapusprodi.php?ID_Prodi=<?= $d['ID_Prodi'] ?>" class="btn btn-danger">Hapus</a>
+                    <td><?php echo $d['id_prodi']?></td>
+                    <td><?php echo $d['nama_prodi']?></td>
+                    <td><a href="editprodi.php?ID_Prodi=<?= $d['id_prodi'] ?>" class="btn btn-warning">Edit</a>
+                    <a href="hapusprodi.php?ID_Prodi=<?= $d['id_prodi'] ?>" class="btn btn-danger">Hapus</a>
                   </td>
                   </tr>
                   <?php

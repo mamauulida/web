@@ -48,9 +48,9 @@ $data = mysqli_fetch_assoc($hasil);
               <form action="editaksiprodi.php" method="POST">
                 <div class="card-body">
                   <div class="form-group">
-                    <input type="hidden" name="ID_Prodi" value="<?= $data['ID_Prodi'] ?>">
+                    <input type="hidden" name="ID_Prodi" value="<?= $data['id_prodi'] ?>">
                     <label for="prodi1">Nama Prodi</label>
-                    <input type="text" name="namaprodi" class="form-control" id="prodi1" value="<?= $data['Nama_Prodi'] ?>">
+                    <input type="text" name="namaprodi" class="form-control" id="prodi1" value="<?= $data['nama_prodi'] ?>">
                   </div>
                 </div>
                 <!-- /.card-body -->
