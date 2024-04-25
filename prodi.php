@@ -1,7 +1,9 @@
 <?php
+session_start();
 include 'template/header.php';
 include 'template/sidebar.php';
 require 'koneksi.php';
+ceklogin();
 
 $query = "SELECT * FROM prodi";
 $hasil = mysqli_query($conn, $query);
@@ -65,8 +67,8 @@ while ($baris = mysqli_fetch_assoc($hasil))
                   <tr>
                     <td><?php echo $d['id_prodi']?></td>
                     <td><?php echo $d['nama_prodi']?></td>
-                    <td><a href="editprodi.php?ID_Prodi=<?= $d['id_prodi'] ?>" class="btn btn-warning">Edit</a>
-                    <a href="hapusprodi.php?ID_Prodi=<?= $d['id_prodi'] ?>" class="btn btn-danger">Hapus</a>
+                    <td><a href="editprodi.php?id_prodi=<?= $d['id_prodi'] ?>" class="btn btn-warning">Edit</a>
+                    <a href="hapusprodi.php?id_prodi=<?= $d['id_prodi'] ?>" class="btn btn-danger">Hapus</a>
                   </td>
                   </tr>
                   <?php
