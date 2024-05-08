@@ -34,6 +34,7 @@
               </p>
             </a>
           </li>
+          <?php if ($_SESSION['hakakses'] == 'admin') {?>
           <li class="nav-item">
             <a href="mahasiswa.php" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
@@ -43,6 +44,7 @@
               </p>
             </a>
           </li>
+          <?php } ?>
           <li class="nav-item">
             <a href="prodi.php" class="nav-link">
               <i class="nav-icon far fa-image"></i>
